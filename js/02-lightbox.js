@@ -24,16 +24,9 @@ gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 gallery.addEventListener('click', evt => {
   evt.preventDefault(); // Запрещаем переход по ссылке
 
-  // Проверяем, клик по нужному элементу (img.gallery__image)
-  const clickedImage = evt.target.closest('.gallery__image');
-  if (!clickedImage) return;
-
-  // ссылка на большое изображение из атрибута data-source
-  const largeImageURL = clickedImage.dataset.source;
-
-  // Создаем и открываем модальное окно с изображением, используем библиотеку SimpleLightbox
+  
  
-    var instance = new SimpleLightbox('.gallery a', { captions: true,
+    let instance = new SimpleLightbox('.gallery a', { captions: true,
   captionsData: 'alt',
   captionDelay: 250,
   docClose: true,

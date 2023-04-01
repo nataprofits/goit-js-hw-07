@@ -37,18 +37,28 @@ gallery.addEventListener('click', evt => {
   // Создаем и открываем модальное окно с изображением, используем библиотеку basicLightbox
   const instance = basicLightbox.create(`
     <img src="${largeImageURL}" alt="${clickedImage.alt}">
-  `);
+  `, {
+    onShow: (instance) => {
+      document.addEventListener('keydown', closeModal);
+    },
+    onClose: (instance) => {'keydown', closeModal},
+  });
+  function closeModal(event) {
+  if (event.code === 'Escape') {
+    instance.close();
+  }
+}
   instance.show();
   
-  // закрытие модального окна по нажатию клавиши Escape
-  const closeOnEscape = evt => {
-  if (evt.code === 'Escape') {
-    instance.close();
-    document.removeEventListener('keydown', closeOnEscape);
-  }
-};
+//   // закрытие модального окна по нажатию клавиши Escape
+//   const closeOnEscape = evt => {
+//   if (evt.code === 'Escape') {
+//     instance.close();
+//     document.removeEventListener('keydown', closeOnEscape);
+//   }
+// };
 
-document.addEventListener('keydown', closeOnEscape);
+// document.addEventListener('keydown', closeOnEscape);
 
 });
   
