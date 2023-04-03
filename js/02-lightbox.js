@@ -20,20 +20,14 @@ const galleryMarkup = galleryItems.map(({ preview, original, description }) => `
 // Вставка разметки в список ul.gallery(html)
 gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 
-// Обработка кликов 
-gallery.addEventListener('click', evt => {
-  evt.preventDefault(); // Запрещаем переход по ссылке
-
-  
- 
-    let instance = new SimpleLightbox('.gallery a', { captions: true,
+// Инициализация библиотеки
+let instance = new SimpleLightbox('.gallery a', { captions: true,
   captionsData: 'alt',
-  captionDelay: 250,
+  animationSpeed: 250,
   docClose: true,
-  swipeClose: true,
   overlayOpacity:0.7,
   closeOnEscape: true, });
   instance.show();
-});
+;
 
 
